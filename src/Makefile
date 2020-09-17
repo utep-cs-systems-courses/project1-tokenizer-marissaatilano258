@@ -1,4 +1,4 @@
-OBJS= uimain.o
+OBJS=analyzeInput.o uimain.o
 
 CFLAGS=-g
 

@@ -17,8 +17,12 @@ int main()
   char *f = word_terminator(test2);
   printf("end should be s %c\n",*(f-1));
   char test3[50] = "there are four words";
-  printf("four words%d\n", count_words(test3));
+  printf("four words %d\n", count_words(test3));
+  char test4[50] = "copy me!";
+  char *test5 = copy_str(test4, 8);
+  for(int i = 0; i < 8; i++){
+    printf("%c\n", test5[i]);
+  }
   return 0;
-  
 }
 

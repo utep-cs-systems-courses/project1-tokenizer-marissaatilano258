@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "tokenizer.h"
 
 int get_length(char *str){
@@ -57,4 +58,13 @@ int count_words(char *str)
     numWords++;
   }
   return numWords;
+}
+
+char *copy_str(char *inStr, short len)
+{
+  char *strAlloc = (char *)malloc(sizeof(char) *(len +1));
+  for(int i = 0; i < len; i++){
+    strAlloc[i] = inStr[i];
+  }
+  return strAlloc;
 }

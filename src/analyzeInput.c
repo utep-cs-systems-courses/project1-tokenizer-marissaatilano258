@@ -87,9 +87,19 @@ char **tokenize(char* str)
 
 void print_tokens(char **tokens)
 {
-  for(int i = 0; i < 3; i++){
-    printf("%s ", tokens[i]);
+  while(*tokens){
+    printf("%s ", *tokens);
+    *tokens++;
   }
   printf("\n");
   return;
+}
+
+void free_tokens(char **tokens)
+{
+  while(*tokens){
+    free(*tokens);
+    *tokens++;
+  }
+  free(tokens);
 }

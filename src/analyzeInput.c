@@ -68,3 +68,28 @@ char *copy_str(char *inStr, short len)
   }
   return strAlloc;
 }
+
+char **tokenize(char* str)
+{
+  
+  int numTokens = count_words(str);
+  char **tokens = (char**)malloc(sizeof(char*) * (numTokens+1));
+  for(int i = 0; i < numTokens; i++){
+    char *start = word_start(str);
+    char *end = word_terminator(str);
+    int diff = end-start;
+    char *token = copy_str(start, diff);
+    tokens[i] = token;
+    str = str + diff+1;
+  }
+  return tokens;
+}
+
+void print_tokens(char **tokens)
+{
+  for(int i = 0; i < 3; i++){
+    printf("%s ", tokens[i]);
+  }
+  printf("\n");
+  return;
+}

@@ -2,13 +2,6 @@
 #include <stdlib.h>
 #include "tokenizer.h"
 
-int get_length(char *str){
-  char * strCopy = str;
-  while(*strCopy++){}
-  int len = strCopy - str;
-  return len;
-}
-
 int space_char(char c)
 {
   if(c == ' ' || c == '\t'){

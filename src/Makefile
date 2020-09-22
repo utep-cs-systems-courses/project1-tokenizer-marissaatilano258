@@ -1,6 +1,6 @@
-OBJS=analyzeInput.o uimain.o
+OBJS=tokenizer.o history.o uimain.o
 
-CFLAGS=-g
+CFLAGS=-g -O3
 
 all: tokenizeInput
 

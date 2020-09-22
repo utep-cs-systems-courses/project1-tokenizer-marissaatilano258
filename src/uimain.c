@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "tokenizer.h"
 #include "history.h"
 
@@ -24,7 +25,8 @@ int main()
   char test6[50] = "Time to tokenize\0";
   char **test8 = tokenize(test6);
   print_tokens(test8);
-  List *testList1 = init_history();
+  List *testList1 = malloc(sizeof(List*));
+  testList1 = init_history();
   char testString[50] = "howdy there partner\0";
   add_history(testList1, testString);
   char testString2[50] = "such lovely we@ther \0";
@@ -38,6 +40,8 @@ int main()
   List *testList2 = init_history();
   print_history(testList2);
   print_history(testList1);
+  free_history(testList1);
+  printf("list %p root %p", testList1, testList1->root);
   return 0;
 }
 

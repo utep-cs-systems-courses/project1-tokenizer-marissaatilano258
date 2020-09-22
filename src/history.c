@@ -41,10 +41,20 @@ char *get_history(List *list, int id)
 
 void print_history(List *list)
 {
-  Item *temp = malloc(sizeof(Item));
+  Item *temp = malloc(sizeof(Item*));
   temp = list->root;
   while(temp){
     printf("%d. %s Next->%p\n", temp->id, temp->str, temp->next);
     temp = temp->next;
+  }
+}
+
+void free_history(List *list)
+{
+  Item *firstItem;
+  while(list->root){
+    firstItem = list->root;
+    list->root = list->root->next;
+    free(firstItem);
   }
 }

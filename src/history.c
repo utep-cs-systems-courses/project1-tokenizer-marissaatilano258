@@ -51,9 +51,8 @@ void print_history(List *list)
 
 void free_history(List *list)
 {
-  Item *firstItem;
   while(list->root){
-    firstItem = list->root;
+    Item *firstItem = list->root;
     list->root = list->root->next;
     free(firstItem);
   }

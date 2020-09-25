@@ -81,10 +81,9 @@ char **tokenize(char* str)
 void print_tokens(char **tokens)
 {
   while(*tokens){
-    printf("%s ", *tokens);
+    printf("%s\n ", *tokens);
     *tokens++;
   }
-  printf("\n");
   return;
 }
 
@@ -94,5 +93,4 @@ void free_tokens(char **tokens)
     free(*tokens);
     *tokens++;
   }
-  free(tokens);
 }

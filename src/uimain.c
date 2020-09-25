@@ -3,45 +3,43 @@
 #include "tokenizer.h"
 #include "history.h"
 
+int get_length(char *str)
+{
+  char *strCopy = str;
+  while(*strCopy){
+    strCopy++;
+  }
+  int diff = strCopy - str;
+  return diff;
+}
+
 int main()
 {
-  char str[50];
-  printf(">");
-  scanf("%[^\n]%*c", str);
-  printf("%s\n", str);
-  printf("is space char %d\n", space_char(str[0]));
-  printf("is non space char %d\n", non_space_char(str[0]));
-  char test1[50] = "find the start\0";
-  char test2[50] = "this\0";
-  char *p = word_start(test1);
-  printf("start should be f %c\n",*p);
-  char *f = word_terminator(test2);
-  printf("end should be s %c\n",*(f-1));
-  char test3[50] = "there are four words\0";
-  printf("four words %d\n", count_words(test3));
-  char test4[50] = "copy me!\0";
-  char *test5 = copy_str(test4, 8);
-  printf("%s\n", test5);
-  char test6[50] = "Time to tokenize\0";
-  char **test8 = tokenize(test6);
-  print_tokens(test8);
-  List *testList1 = malloc(sizeof(List*));
-  testList1 = init_history();
-  char testString[50] = "howdy there partner\0";
-  add_history(testList1, testString);
-  char testString2[50] = "such lovely we@ther \0";
-  char testString3[50] = "   hello   world   \0";
-  add_history(testList1, testString2);
-  add_history(testList1, testString3);
-  char *returnedStr = get_history(testList1, 3);
-  if(returnedStr){
-    printf("%s\n", get_history(testList1, 3));
+  List *history = init_history();
+  int i = 0;
+  while(i <5){
+    char str[50];
+    printf("Please enter a string to tokenize, a history id, or q to quit");
+    printf(">");
+    scanf("%[^\n]%*c", str);
+    int strLength = get_length(str);
+    if(strLength == 1 && str[0] == 'q'){
+      return 1;
+    } else if(strLength == 2 && str[0] == '!' && (str[1] >'0' && str[1] <='9')){
+      int i = str[1]-'0';
+      printf("%s\n", get_history(history,i));
+    }
+    else{
+      printf("%s\n", str);
+      char** tokens = tokenize(str);
+      print_tokens(tokens);
+      add_history(history,copy_str(str,strLength));
+      free_tokens(tokens);
+      free(tokens);
+    }
+    i++;
   }
-  List *testList2 = init_history();
-  print_history(testList2);
-  print_history(testList1);
-  free_history(testList1);
-  printf("list %p root %p", testList1, testList1->root);
+  free_history(history);
   return 0;
 }
 

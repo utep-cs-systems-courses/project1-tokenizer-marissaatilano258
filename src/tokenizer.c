@@ -63,8 +63,7 @@ char *copy_str(char *inStr, short len)
 }
 
 char **tokenize(char* str)
-{
-  
+{  
   int numTokens = count_words(str);
   char **tokens = (char**)malloc(sizeof(char*) * (numTokens+1));
   for(int i = 0; i < numTokens; i++){
@@ -81,7 +80,7 @@ char **tokenize(char* str)
 void print_tokens(char **tokens)
 {
   while(*tokens){
-    printf("%s\n ", *tokens);
+    printf("%s\n", *tokens);
     *tokens++;
   }
   return;

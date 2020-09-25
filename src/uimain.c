@@ -16,8 +16,8 @@ int get_length(char *str)
 int main()
 {
   List *history = init_history();
-  int i = 0;
-  while(i <5){
+  int i = 1;
+  while(i){
     char str[50];
     printf("Please enter a string to tokenize, a history id, or q to quit");
     printf(">");
@@ -40,6 +40,7 @@ int main()
     i++;
   }
   free_history(history);
+  free(history);
   return 0;
 }
 

@@ -15,7 +15,8 @@ The following files are included in this program
     -history.c: Defines functions to create a history of tokenized strings
     -history.h: Header file containing all declarations of methods in history.c
     -uimain.c: Main file with UI to interact with the user. Based on the user
-    input, it will tokenize a string or recall history
+    input, it will tokenize a string or recall history through the command
+    "!#", where # represents a digit.
 
 You can compile this program using the commands
     $ make clean
